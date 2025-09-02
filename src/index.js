@@ -4,7 +4,16 @@ dotenv.config({
   path: "./env",
 });
 
-connectDB();
+connectDB()
+.then(()=>{
+  app.listen(process.env.PORT||8000,()=>{
+    console.log(`Server is running at PORT ${process.env.PORT}`)
+  })
+})
+.catch((error)=>{
+  console.log("Mongo DB Connection Failed!!!",error);
+  
+})
 
 // import mongoose from "mongoose";
 // import express from "express";
