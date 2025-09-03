@@ -1,5 +1,9 @@
 import mongoose from "mongoose";
 import { DB_NAME } from "../constants.js";
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
+
 const connectDB = async () => {
   try {
     const DbInstance = await mongoose.connect(
@@ -15,3 +19,4 @@ const connectDB = async () => {
   }
 };
 export default connectDB;
+
